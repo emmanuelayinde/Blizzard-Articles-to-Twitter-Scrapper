@@ -22,9 +22,8 @@ client = tweepy.API(auth)
 def tweet(text, media = None):
     if media == None:
         response = client.update_status(
-            text = text
+            status = text
         )
-        print(f"https://twitter.com/user/status/{response.data['id']}")
     else:
         media_file = client.media_upload(filename = media)
         response = client.update_status(status = text, media_ids = [media_file.media_id_string])
