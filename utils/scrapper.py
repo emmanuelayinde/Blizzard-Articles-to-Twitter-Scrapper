@@ -1,6 +1,7 @@
 # IMPORT NECCESSARY LIB
 import os
 import time
+from utils.date import now
 from utils.formatter import format_description_text
 from utils.tweet import tweet
 
@@ -32,11 +33,11 @@ def blizzard_forum_scrapper(driver, WebDriverWait, By, EC):
             break
 
     if url == None:
-        print('No new articles available at the moment')        
+        print('No new articles available at the moment', now())        
     else:
         scrape_articles(driver, WebDriverWait, By, EC, url)
+        print('done..............', now())    
         driver.quit()
-        print('done..............')    
 
 
 def scrape_articles(driver, WebDriverWait, By, EC, url):

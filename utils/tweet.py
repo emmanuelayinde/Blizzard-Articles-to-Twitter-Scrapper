@@ -2,6 +2,8 @@ import os
 import tweepy
 from dotenv import load_dotenv
 
+from utils.date import now
+
 load_dotenv()
 
 # TWITTER API CREDENTIALS 
@@ -27,4 +29,4 @@ def tweet(text, media = None):
     else:
         media_file = client.media_upload(filename = media)
         response = client.update_status(status = text, media_ids = [media_file.media_id_string])
-        print('Tweeted.................................')
+        print('Tweeted.................................', now())
