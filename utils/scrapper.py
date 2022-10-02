@@ -9,12 +9,13 @@ path = os.getcwd()
 default_media = path + '/blizzard.png'
 
 def blizzard_forum_scrapper(driver, WebDriverWait, By, EC):
-    driver.implicitly_wait(10)
     driver.get('https://us.forums.blizzard.com/en/hearthstone/g/blizzard-tracker/activity/topics')
+    wait = WebDriverWait(driver, 60)
+    driver.implicitly_wait(10)
 
     url = None 
 
-    all_bliss_articles = WebDriverWait(driver, 20).until(EC.visibility_of_all_elements_located((By.CSS_SELECTOR, "a.tracked-post.group-community-manager")))
+    all_bliss_articles = wait.until(EC.visibility_of_all_elements_located((By.CSS_SELECTOR, "a.tracked-post.group-community-manager")))
     top_ten_articles = all_bliss_articles[:10] 
 
     for new_url in top_ten_articles:
@@ -45,10 +46,10 @@ def scrape_articles(driver, WebDriverWait, By, EC, url):
     time.sleep(10)
     title = driver.find_element(By.CSS_SELECTOR, "a.fancy-title").text
 
-    intro = '📢---Forum known issues update spotted---📢'
+    intro = '📢 Forum article spotted 📢'
     url = driver.current_url
    
-    text = f"{intro}\n\n📺 {title}\n\nSource: {url}"
+    text = f"{intro}\n\n📺 {title}\n\n🌐 {url}"
 
     # UPLOAD TO TWITTER
     tweet(text, media = default_media)
