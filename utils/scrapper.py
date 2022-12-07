@@ -21,10 +21,9 @@ def blizzard_forum_scrapper(driver, WebDriverWait, By, EC):
     for new_url in top_ten_articles:
         tweeted = False
         with open(path +"/data/tweeted_articles.txt") as f:
-            for line in f:
-                if line.strip() == new_url.get_attribute('href'):
-                    tweeted = True
-                    break
+            if new_url.get_attribute('href') in f.read():
+                tweeted = True
+                break
         if tweeted:
             continue  
         else: 
