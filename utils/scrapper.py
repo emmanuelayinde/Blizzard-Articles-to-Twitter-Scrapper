@@ -48,7 +48,7 @@ def scrape_articles(driver, WebDriverWait, By, EC, url):
     intro = '📢 Forum article spotted 📢'
     url = driver.current_url
    
-    text = f"{intro}\n\n📺 {title}\n\n🌐 {url}"
+    text = f"{intro}\n\n📰 {title}\n\n🌐 {url}"
 
     # UPLOAD TO TWITTER
     tweet(text, media = default_media)
