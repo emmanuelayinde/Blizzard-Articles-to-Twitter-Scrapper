@@ -7,11 +7,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from utils.date import now
-# from keep_alive import alive
 from utils.scrapper import blizzard_forum_scrapper
 import chromedriver_autoinstaller
-
-#chromedriver_autoinstaller.install()
 
 # CONFIG FOR PRODUCTION ENV
 chrome_options = webdriver.ChromeOptions()
@@ -34,5 +31,5 @@ while True:
     blizzard_forum_scrapper(driver, WebDriverWait, By, EC)
 
     # Sleep for 10secs then continue
-    time.sleep(10)
+    time.sleep(4)
 
